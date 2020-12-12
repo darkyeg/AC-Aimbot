@@ -24,7 +24,7 @@ DWORD WINAPI run(HMODULE hModule)
     static int* GameTypePtr = (int*)(moduleBase + 0xE4DB4);
     static int* maxPlayer = (int*)(moduleBase + 0xE4E10);
 
-    static int EntityHealthOffest = 0xF4;
+    static int HealthOffest = 0xF4;
     static int TeamOffest = 0x320;
     static int LocationOffest = 0x4;
     static int AngelOffest = 0x40;
@@ -58,8 +58,8 @@ DWORD WINAPI run(HMODULE hModule)
                 //cout << "Address: " << hex << entAddr << "\n\r";
                 if (!entAddr) continue;
                 //cout << "Health: " << *(int*)(entAddr + EntityHealthOffest) << "\n\r";
-                if (*(int*)(entAddr + EntityHealthOffest) < 0) continue;
-                if (*(int*)(*LocalPlayerPtr + EntityHealthOffest) < 0) continue;
+                if (*(int*)(entAddr + HealthOffest) < 0) continue;
+                if (*(int*)(*LocalPlayerPtr + HealthOffest) < 0) continue;
                 float cDist = vec3::Distance(*(vec3*)(entAddr + LocationOffest), *LocalPlayerLocation);
                 if (cDist < closedEntityDist) 
                 {
