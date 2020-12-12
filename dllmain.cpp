@@ -33,7 +33,6 @@ DWORD WINAPI run(HMODULE hModule)
     static vec3* LocalPlayerLocation = (vec3*)(*LocalPlayerPtr + LocationOffest);
     static vec3* LocalPlayerAngel = (vec3*)(*LocalPlayerPtr + AngelOffest);
 
-    bool onOrOff = false;
     while (true) 
     {
         if (GetAsyncKeyState(VK_DELETE) & 0x80000)
@@ -41,12 +40,8 @@ DWORD WINAPI run(HMODULE hModule)
             cout << "Breaked" << "\n\r";
             break;
         }
-        if (GetAsyncKeyState(F_KEY) & 0x80000)
-        {
-            onOrOff = true;
-        }
-        else onOrOff = false;
-        if (onOrOff) 
+ 
+        if (GetAsyncKeyState(F_KEY) & 0x80000) 
         {
             
             //cout << "GameType: " << *GameTypeAddr << "\n\r";
