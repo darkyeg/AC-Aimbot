@@ -1,3 +1,4 @@
 # AC Aimbot
-Simple internal hack for your hack \
-you just need to edit the addresses and offests and fun
+Simple internal hack for your game.\
+You just need to edit the addresses and offests and fun.\
+Current addresses of AssaultCube game.
