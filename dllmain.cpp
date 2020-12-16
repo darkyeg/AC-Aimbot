@@ -10,6 +10,7 @@ using namespace std;
 FILE* f;
 DWORD WINAPI run(HMODULE hModule)
 {
+    
 #ifdef _DEBUG
     cout << "Debugging" << "\n\r";
     AllocConsole();
@@ -119,11 +120,12 @@ VOID WINAPI closeAll() {
 }
 BOOL APIENTRY DllMain( HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved )
 {
+    HANDLE handle = NULL;
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
         DisableThreadLibraryCalls(hModule);    
-        auto handle = CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)run, hModule, NULL, NULL);
+        handle = CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)run, hModule, NULL, NULL);
         if(handle) CloseHandle(handle);
         break;
     case DLL_PROCESS_DETACH:
